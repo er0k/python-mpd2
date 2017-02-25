@@ -9,4 +9,7 @@ python:
   - "3.5"
   - "pypy"
 
-script: python mpd_test.py
+install:
+  - if [[ $TRAVIS_PYTHON_VERSION != '3.2' ]]; then pip install Twisted; fi
+
+script: python -m unittest mpd.tests
